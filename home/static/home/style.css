@@ -1,0 +1,18 @@
+p {
+    color: red;
+}
+
+h1 {
+    color: gray;
+}
+a {
+    color: violet;
+}
+.news-items {
+    width: 200px;
+    background: #ccc;
+    padding: 5px;
+    padding-right: 20px;
+    border: solid 1px black;
+    float: left;
+   }

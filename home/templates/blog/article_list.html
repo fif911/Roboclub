@@ -1,0 +1,98 @@
+<html>
+
+<head>
+<title>news</title>
+</head>
+ <body>
+
+{% include "common/header.html" %}
+
+
+
+   <div class="container">
+    <div class="row">
+        {% if articles %}
+        {%for article in articles%}
+
+
+          <div class="post">
+
+              <h2>{{article.title}}</h2>
+              {% if article.image %}
+                  <img  src='{{ article.image.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image2 %}
+                  <img  src='{{ article.image2.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image3 %}
+                  <img  src='{{ article.image3.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image4 %}
+                  <img  src='{{ article.image4.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image5 %}
+                  <img  src='{{ article.image5.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image6 %}
+                  <img  src='{{ article.image6.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image7 %}
+                  <img  src='{{ article.image7.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image8 %}
+                  <img  src='{{ article.image8.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image9 %}
+                  <img  src='{{ article.image9.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image10 %}
+                  <img  src='{{ article.image10.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.video1 %}
+              <iframe width="560" height="315" src='{{article.video1}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+               {% if article.video2 %}
+              <iframe width="560" height="315" src='{{article.video2}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+               {% if article.video3 %}
+              <iframe width="560" height="315" src='{{article.video3}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+
+              <p>{% autoescape off %}{{article.body|truncatechars_html:50}}{% endautoescape %}</p>
+
+              
+
+            <p><a class="btn btn-default" href = "{% url 'article' article.pk %}" role="button">View details »</a></p>
+          </div>
+
+
+        </div>
+      {% endfor %}
+        {% else %}
+<p>no posts yet)</p>
+{% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if articles.has_previous %}
+            <a href="?page={{ articles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+        </span>
+
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+    </div>
+</div>
+<hr color="red">
+
+<footer>
+  <p>© 2017  </p>
+</footer>
+</body>
+</html>

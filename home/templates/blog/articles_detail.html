@@ -1,0 +1,52 @@
+<html>
+<head>
+  <title>{{article.title}}</title>
+</head>
+<body>
+{% include "common/header.html" %}
+<h1>{{article.title}}</h1>
+    {% if article.image %}
+        <img  src='{{ article.image.url }}' class="img-rounded" height="30%" >
+    {% endif %}
+
+    {% if article.image2 %}
+        <img  src='{{ article.image2.url }}' class="img-rounded" height="30%" >
+    {% endif %}
+              {% if article.image3 %}
+                  <img  src='{{ article.image3.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image4 %}
+                  <img  src='{{ article.image4.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image5 %}
+                  <img  src='{{ article.image5.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image6 %}
+                  <img  src='{{ article.image6.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image7 %}
+                  <img  src='{{ article.image7.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image8 %}
+                  <img  src='{{ article.image8.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image9 %}
+                  <img  src='{{ article.image9.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+              {% if article.image10 %}
+                  <img  src='{{ article.image10.url }}' class="img-rounded" height="30%" >
+              {% endif %}
+                {% if article.video1 %}
+              <iframe width="560" height="315" src='{{article.video1}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+               {% if article.video2 %}
+              <iframe width="560" height="315" src='{{article.video2}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+               {% if article.video3 %}
+              <iframe width="560" height="315" src='{{article.video3}}' frameborder="0" allowfullscreen></iframe>
+                {% endif %}
+<div style="width: 80%;border: solid 1px black; word-wrap:break-word;  "><p>{% autoescape off %}{{ article.body }}{% endautoescape %}</p></div>
+<p>{{article.publish}}</p>
+</body>
+</html>
+

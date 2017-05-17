@@ -1,0 +1,67 @@
+<html>
+
+<head>
+<title>Financial reports</title>
+    {% load static %}
+
+    <link rel="stylesheet" type="text/css" href="{% static 'about/style.css' %}" />
+
+</head>
+<body>
+
+{% include "common/header.html" %}
+
+   <div class="container">
+    <div class="row">
+        {% if articles %}
+        {%for article in articles%}
+
+
+          <div class="post">
+                  <h2>{{article.title}}</h2>
+              <p>{% autoescape off %}{{article.body}}{% endautoescape %}</p>
+              {% if article.document1 %}
+                  <div style="width: 200px;  background: #ccc; margin-top:13px;"><a target="_blank" href="{{article.document1}}">{{article.nameOfDocument1}}</a></div>
+              <br>
+              {% endif %}
+              {% if article.document2 %}
+                  <div style="width: 200px;  background: #ccc;"><a target="_blank" href="{{article.document2}}">{{article.nameOfDocument2}}</a></div>
+                    <br>
+              {% endif %}
+              {% if article.document3 %}
+                  <div style="width: 200px;  background: #ccc;"><a target="_blank" href="{{article.document3}}">{{article.nameOfDocument3}}</a></div>
+
+              {% endif %}
+          </div>
+
+
+        </div>
+      {% endfor %}
+        {% else %}
+<p>no posts yet)</p>
+{% endif %}
+</div>
+<div class="pagination">
+    <span class="step-links">
+        {% if articles.has_previous %}
+            <a href="?page={{ articles.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
+        </span>
+
+        {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+    </div>
+</div>
+<hr color="red">
+
+<footer>
+  <p>© 2016  </p>
+</footer>
+</body>
+</html>

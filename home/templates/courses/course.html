@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{course.name}}</title>
+</head>
+<body>
+{% include "common/header.html" %}
+<h1>{{course.name}}</h1>
+<div style="width: 80%;border: solid 1px black; word-wrap:break-word;  ">
+    <p>{% autoescape off %}{{ course.body }}{% endautoescape %}</p>
+
+</div>
+{% if course.image %}
+<img  src='{{ course.image.url }}' class="img-rounded" height="30%" >
+{% endif %}
+</body>
+</html>
