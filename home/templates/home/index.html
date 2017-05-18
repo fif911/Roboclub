@@ -1,34 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Home page</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
-</head>
-<body>
-{% include "common/header.html" %}
-<a href="/news">NEWS HERE!!!!</a>
-<img src="{% static 'img/1.png' %}" alt="My image"/>
+	<meta charset="utf-8" />
+	<title>RoboClub</title>
+	{% load static %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic">
+	<link rel="shortcut icon" href="{% static 'home/img/favicon.png' %}" />
 
-<h1>This is heading 1</h1>
-<p>This is an ordinary paragraph. Notice that this text is blue.
-    The default text color for a page is defined in the body selector.</p>
-<div class="panel-news">
-    {% if articles %}
-    {%for article in articles%}
-    <a href="{% url 'article' article.pk %}"><div class="news-items">
-        <p>{{article.title}}</p>
-        {% if article.image %}
-            <img  src='{{ article.image.url }}' class="img-rounded" height="100px" >
-        {% else %}
-            <img  src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png' class="img-rounded" height="100px" >
-        {% endif %}
-    </div></a>
-    {% endfor %}
-    {% else %}
-    <p>no posts yet)</p>
-    {% endif %}
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body style="background: url({% static 'home/img/bg.png' %}) center top no-repeat">
+
+<div class="wrapper">
+
+	<header class="header">
+
+		<div class="container">
+			<div class="logo ir">
+				<a href="/" class="logo__link">RoboClub</a>
+			</div>
+
+			<nav class="main-nav">
+				<ul class="main-menu">
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Головна</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Про нас</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Курси</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Новини</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Галерея</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Контакти</a>
+					</li>
+					<li class="main-menu__item socials">
+						<a class="main-menu__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+						<a class="main-menu__link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+						<a class="main-menu__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+	</header><!-- .header -->
+
+	<main class="content">
+
+		<div class="container">
+			<div class="intro">
+				<h1 class="intro__title">Lorem Ipsum is simply</h1>
+				<p class="intro__p">Lorem Ipsum</p>
+				<button class="basic-btn red intro__btn" type="button">Зареєструватись</button>
+				<button class="intro__btn-video" type="button"><i class="fa fa-play-circle" aria-hidden="true"></i> Дивитись відео</button>
+			</div>
+		</div>
+
+
+		<section class="section mission">
+			<div class="container">
+				<h3 class="mission__title">Місія</h3>
+
+				<div class="mission__cols">
+					<div class="mission__col">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+					<div class="mission__col">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+					<div class="mission__col"><div class="robo-img"></div></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section quotes">
+			<div class="container">
+				<div class="quotes__icon"></div>
+				<p class="quotes__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+				<p class="quotes__author">John Doe</p>
+
+				<ul class="users">
+					<li class="users__item">
+						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_1.png' %}" height="46" width="46"></a>
+					</li>
+					<li class="users__item">
+						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_2.png' %}" height="46" width="46"></a>
+					</li>
+					<li class="users__item">
+						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_3.png' %}" height="46" width="46"></a>
+					</li>
+					<li class="users__item">
+						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_4.png' %}" height="46" width="46"></a>
+					</li>
+					<li class="users__item">
+						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_5.png' %}" height="46" width="46"></a>
+					</li>
+				</ul>
+			</div>
+		</section>
+
+		<section class="section">
+			<div class="container">
+				<h2 class="section__title">Останні новини</h2>
+				
+				<ul class="big-news">
+					<li class="big-news__item">
+						<img src="{% static 'home/pic/news_1.jpg' %}" height="240" width="240">
+						<div class="big-news__desc">
+							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+							<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+						</div>
+					</li>
+
+					<li class="big-news__item blue">
+						<img src="{% static 'home/pic/news_2.jpg' %}" height="240" width="240">
+						<div class="big-news__desc">
+							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+							<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+						</div>
+					</li>
+
+					<li class="big-news__item">
+						<img src="{% static 'home/pic/news_3.jpg' %}" height="240" width="240">
+						<div class="big-news__desc">
+							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+							<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+						</div>
+					</li>
+
+					<li class="big-news__item blue">
+						<img src="{% static 'home/pic/news_4.jpg' %}" height="240" width="240">
+						<div class="big-news__desc">
+							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+							<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+						</div>
+					</li>
+				</ul>
+
+				<button class="basic-btn yellow centered" type="button">Всі новини</button>
+			</div>
+		</section>
+
+		<section class="section ready dark">
+			<div class="container">
+				<h2 class="section__title">Готові розпочати?</h2>
+				<h3 class="section__subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry</h3>
+
+				<button class="basic-btn yellow centered" type="button">Зареєструватись</button>
+			</div>
+		</section>
+
+		<section class="section partners container">
+			<h2 class="section__title">Наші партнери</h2>
+
+			<ul class="partners-list">
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_1.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_2.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_3.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_4.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_5.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_6.jpg' %}" height="46" width="100"></a>
+				</li>
+				<li class="partners-list__item">
+					<a href="#"><img src="{% static 'home/pic/partners_7.jpg' %}" height="46" width="100"></a>
+				</li>
+			</ul>
+		</section>
+
+		<section class="section contacts dark">
+			<div class="container">
+				<div class="contacts__col">
+					<h3 class="section__title">Контакти</h3>
+
+					<div class="contacts__info">
+						<div class="contacts__info-item">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
+						</div>
+
+						<div class="contacts__info-item">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
+						</div>
+					</div>
+
+					<h3 class="section__title">Напишіть нам</h3>
+
+					<form class="basic-form">
+						<div class="basic-form__line">
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Ім’я">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Телефон">
+							</div>
+						</div>
+
+						<div class="basic-form__line">
+							<input class="basic-input" type="text" name="" placeholder="Тема повідомлення">
+						</div>
+
+						<div class="basic-form__line">
+							<textarea class="basic-textarea" placeholder="Повідомлення"></textarea>
+						</div>
+
+						<div class="basic-form__btns">
+							<img src="{% static 'home/img/reCaptcha.png' %}" height="46" width="184">
+							<button class="basic-form__submit basic-btn yellow" type="submit">Надіслати</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="contacts__col map">
+					<div class="contacts__map-wrap">
+						<div id="map"></div>
+
+						<script>
+						  function initMap() {
+							var mapDiv = document.getElementById('map');
+							var map = new google.maps.Map(mapDiv, {
+								center: {lat: 48.922973, lng: 24.701402},
+								zoom: 17,
+								disableDefaultUI: true,
+								draggable: false
+							});
+					
+							var marker = new google.maps.Marker({
+								position: new google.maps.LatLng(48.922973, 24.701402),
+								map: map,
+								title: 'RoboClub',
+								icon: '{% static 'home/svg/marker.svg' %}'
+							});
+					
+							map.setOptions({styles: styles});
+						  }
+						</script>
+					
+						<script async defer
+							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZEocFpuybFyJZg92LhWsvIJdo56S34s&callback=initMap">
+						</script>
+					</div>
+				</div>
+			</div>
+		</section>
+
+	</main><!-- .content -->
+
+	<footer class="footer">
+
+		<p class="f-copy">Copyright &copy; GO Tour. All rights reserved.</p>
+
+	</footer><!-- .footer -->
+
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'home/js/scripts.js' %}"></script>
+
 </body>
 </html>
