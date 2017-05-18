@@ -1,3 +1,4 @@
+
 from django.db import models
 
 # Create your models here.
@@ -10,6 +11,8 @@ class Course(models.Model):
     age_limit = models.FloatField(null=True, blank=True,)
     course_objective = models.TextField(null=True, blank=True, )
     body = models.TextField(null=True, blank=True, )
+    description = models.CharField(widget=widgets.AdminWYMEditor)
+
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, )#FIXXXXX
     def __str__(self):
         return self.name
