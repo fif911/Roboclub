@@ -36,7 +36,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     # 'blog.apps.BlogConfig',
     'courses.apps.CoursesConfig',
-
+    'soon.apps.SoonConfig',
     'home.apps.HomeConfig',
     'about.apps.AboutConfig',
 

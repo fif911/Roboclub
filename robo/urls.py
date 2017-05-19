@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^index/', include('home.urls')),
-    url(r'', include('home.urls')),
+    url(r'', include('soon.urls')),
     # url(r'^news/', include('blog.urls')),
     url(r'^', include('blog.urls')),
     url(r'^about/', include('about.urls')),
