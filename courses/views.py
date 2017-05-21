@@ -13,8 +13,12 @@ class CoursesList(TemplateView):
 
 class CourseDetail(TemplateView):
     template_name = "courses/course.html"
-    def get(self, request, *args, **kwargs):
-        id = kwargs['id']
-        course = Course.objects.get(id=id)
-        return render(request, self.template_name,{"course": course})
+    # def get(self, request, *args, **kwargs):
+    #     id = kwargs['id']
+    #     course = Course.objects.get(id=id)
+    #     return render(request, self.template_name,{"course": course})
+    def get_context_data(self, **kwargs):
+        context = super(CourseDetail, self).get_context_data(**kwargs)
+        context['course'] = Course.objects.get(id=kwargs['id'])
+        return context
 

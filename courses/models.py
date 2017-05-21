@@ -1,4 +1,4 @@
-
+from django.core.urlresolvers import reverse
 from django.db import models
 
 # Create your models here.
@@ -14,5 +14,12 @@ class Course(models.Model):
     # description = models.CharField(widget=widgets.AdminWYMEditor)
 
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, )#FIXXXXX
+
+
+    def get_absolute_url(self):
+        return reverse("courseDetail", kwargs={"id": self.id})
+
+
     def __str__(self):
         return self.name
+

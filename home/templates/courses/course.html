@@ -7,6 +7,8 @@
 <body>
 {% include "common/header.html" %}
 <h1>{{course.name}}</h1>
+<p>Age limit : {{course.age_limit|floatformat}} +</p>
+<p>Мета курсу : {{course.course_objective}}</p>
 <div style="width: 80%;border: solid 1px black; word-wrap:break-word;  ">
     <p>{% autoescape off %}{{ course.body }}{% endautoescape %}</p>
 
