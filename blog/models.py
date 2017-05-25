@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from django.template.defaultfilters import slugify
 
 from django.db import models
 from django.utils import timezone
@@ -12,7 +13,8 @@ def upload_location(instance, filename):
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=250)
-    slug = models.SlugField(allow_unicode=True, max_length=250)
+    slug = models.SlugField(unique=True,allow_unicode=True, max_length=250)
+
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, )
@@ -29,8 +31,12 @@ class Article(models.Model):
     video2 = models.URLField(max_length=150,null=True, blank=True, )
     video3 = models.URLField(max_length=150,null=True, blank=True, )
 
-    def get_absolute_url(self):
-        return reverse("article", kwargs={"pk": self.pk})
+    # Then override models save method:
+    def save(self, *args, **kwargs):
+        if not self.id:
+            # Only set the slug when the object is created.
+            self.slug = slugify(self.title)  # Or whatever you want the slug to use
+        super(Article, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ('-publish',)
@@ -41,6 +47,9 @@ class Article(models.Model):
     def __unicode__(self):
         return u"%s" % self.title
 
-
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("article", kwargs={"pk": self.pk})
+

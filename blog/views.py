@@ -28,10 +28,12 @@ class ArticlesList(ListView):
     # def get_queryset(self, request):
 
 
-
 class ArticleDetail(TemplateView):
     template_name = "blog/articles_detail.html"
+    def get(self, request, *args, **kwargs):
+        article_detail=Article.objects.get(slug=kwargs['slug'])
 
+        return render(request,self.template_name,{"article": article_detail})
     def get_context_data(self, **kwargs):
         context = super(ArticleDetail, self).get_context_data(**kwargs)
         context['article'] = Article.objects.get(pk=kwargs['pk'])
