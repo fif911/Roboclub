@@ -14,7 +14,6 @@ def upload_location(instance, filename):
 class Article(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(unique=True, allow_unicode=True, max_length=250)
-
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, )
