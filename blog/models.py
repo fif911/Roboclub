@@ -13,7 +13,7 @@ def upload_location(instance, filename):
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=250)
-    slug = models.SlugField(unique=True,allow_unicode=True, max_length=250)
+    slug = models.SlugField(unique=True, allow_unicode=True, max_length=250)
 
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
@@ -51,5 +51,5 @@ class Article(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("article", kwargs={"pk": self.pk})
+        return reverse("article", kwargs={"slug": self.slug})
 
