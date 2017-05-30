@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'aeu*&@zo9hb+2we9vhvt_zwzh#b1xhzeqnrn6utbrru4pe8fw3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
-# DEBUG = False
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -134,27 +134,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(PROJECT_ROOT, 'static'),
-)
-
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+#
+# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
 # STATIC_URL = '/static/'
-# # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
-# #when deploying uncomment
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#
+# # Extra places for collectstatic to find static files.
+# STATICFILES_DIRS = (
+#     os.path.join(PROJECT_ROOT, 'static'),
+# )
+
+STATIC_URL = '/static/'
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
+#when deploying uncomment
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 
 #for heroku DB
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
