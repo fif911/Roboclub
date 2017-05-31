@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'aeu*&@zo9hb+2we9vhvt_zwzh#b1xhzeqnrn6utbrru4pe8fw3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 
 DEBUG = False
+TEMPLATE_DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -65,12 +65,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'robo.urls'
-
+print(BASE_DIR)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        # 'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'home/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,11 +87,14 @@ WSGI_APPLICATION = 'robo.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'mydatabase',
+        'USER': 'mydatabaseuser',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
@@ -133,23 +135,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-
-# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-#
-# STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-# STATIC_URL = '/static/'
-#
-# # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(PROJECT_ROOT, 'static'),
-# )
-
-STATIC_URL = '/static/'
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"),]
-#when deploying uncomment
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_URL ='/media/'
+STATIC_URL = '/static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
+MEDIA_URL = '/media/'
+# Extra places for collectstatic to find static files.
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #for heroku DB
 # db_from_env = dj_database_url.config(conn_max_age=500)
@@ -158,3 +151,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 # https://warehouse.python.org/project/whitenoise/
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
