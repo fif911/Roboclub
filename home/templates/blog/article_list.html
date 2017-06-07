@@ -11,7 +11,7 @@
 
    <div class="container">
     <div class="row">
-        {% if articles %}
+
         {%for article in articles%}
 
 
@@ -65,12 +65,12 @@
             <p><a class="btn btn-default" href = "{% url 'article' article.slug %}" role="button">View details »</a></p>
           </div>
 
-
-        </div>
-      {% endfor %}
-        {% else %}
+        {% empty %}
 <p>no posts yet)</p>
-{% endif %}
+  {% endfor %}
+        </div>
+
+
 </div>
 <div class="pagination">
     <span class="step-links">

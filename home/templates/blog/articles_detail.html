@@ -45,7 +45,9 @@
                {% if article.video3 %}
               <iframe width="560" height="315" src='{{article.video3}}' frameborder="0" allowfullscreen></iframe>
                 {% endif %}
-<div style="width: 80%;border: solid 1px black; word-wrap:break-word;  "><p>{% autoescape off %}{{ article.body }}{% endautoescape %}</p></div>
+<div style="width: 80%;border: solid 1px black; word-wrap:break-word; ">
+    <p>{% autoescape off %}{{ article.body }}{% endautoescape %}</p>
+</div>
 <p>{{article.publish}}</p>
 </body>
 </html>
