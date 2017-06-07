@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+local_settings.py
+*.sqlite3
+.idea/
+
 # C extensions
 *.so
 
