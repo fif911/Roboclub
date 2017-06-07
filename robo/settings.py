@@ -142,7 +142,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "upload")
 MEDIA_URL = '/media/'
 # Extra places for collectstatic to find static files.
 
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #for heroku DB
 # db_from_env = dj_database_url.config(conn_max_age=500)
