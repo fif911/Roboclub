@@ -1,10 +1,11 @@
 {% load static %}
+
+{% static 'home/css/main.css' %}
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="utf-8" />
 	<title>RoboClub</title>
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -19,24 +20,39 @@
 	<![endif]-->
 </head>
 
-<body style="background: url({% static 'home/img/bg.png' %}) center top no-repeat">
+<body>
 
 <div class="wrapper">
+
+	<div class="preloader">
+		<div class="preloader__inner">
+			<div class="preloader__gear"></div>
+			<div class="preloader__logo"></div>
+		</div>
+	</div>
 
 	<header class="header">
 
 		<div class="container">
-			<div class="logo ir">
-				<a href="/" class="logo__link">RoboClub</a>
-			</div>
+			<h1 class="logo ir">
+				<a href="/" class="logo__link">RoboClub IF</a>
+			</h1>
 
 			<nav class="main-nav">
 				<ul class="main-menu">
 					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Головна</a>
 					</li>
-					<li class="main-menu__item">
+					<li class="main-menu__item has-sub">
 						<a class="main-menu__link" href="#">Про нас</a>
+
+						<ul class="sub-menu">
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">RoboClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">CodeClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Design Squad</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Physics</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Astronomy</a></li>
+						</ul>
 					</li>
 					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Курси</a>
@@ -50,10 +66,17 @@
 					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Контакти</a>
 					</li>
-					<li class="main-menu__item socials">
-						<a class="main-menu__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-						<a class="main-menu__link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
-						<a class="main-menu__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				</ul>
+
+				<ul class="main-socials">
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
 					</li>
 				</ul>
 			</nav>
@@ -61,63 +84,83 @@
 
 	</header><!-- .header -->
 
-	<main class="content">
-
+	<div class="intro">
 		<div class="container">
-			<div class="intro">
+			<div class="intro__inner">
 				<h1 class="intro__title">Lorem Ipsum is simply</h1>
 				<p class="intro__p">Lorem Ipsum</p>
 				<button class="basic-btn red intro__btn" type="button">Зареєструватись</button>
 				<button class="intro__btn-video" type="button"><i class="fa fa-play-circle" aria-hidden="true"></i> Дивитись відео</button>
 			</div>
 		</div>
+	</div>
+
+	<main class="content">
 
 
-		<section class="section mission">
+		<section class="section mission-section">
 			<div class="container">
-				<h3 class="mission__title">Місія</h3>
+				<h3 class="mission-section__title">Місія</h3>
 
-				<div class="mission__cols">
-					<div class="mission__col">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-					<div class="mission__col">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
-					<div class="mission__col"><div class="robo-img"></div></div>
+				<div class="mission-section__cols">
+					<div class="mission-section__col">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="mission-section__col">
+						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					</div>
+					<div class="mission-section__col">
+						<div class="robo-img"></div>
+					</div>
 				</div>
 			</div>
 		</section>
 
-		<section class="section quotes">
+		<section class="section quotes-section">
 			<div class="container">
-				<div class="quotes__icon"></div>
-				<p class="quotes__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-				<p class="quotes__author">John Doe</p>
 
-				<ul class="users">
-					<li class="users__item">
-						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_1.png' %}" height="46" width="46"></a>
-					</li>
-					<li class="users__item">
-						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_2.png' %}" height="46" width="46"></a>
-					</li>
-					<li class="users__item">
-						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_3.png' %}" height="46" width="46"></a>
-					</li>
-					<li class="users__item">
-						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_4.png' %}" height="46" width="46"></a>
-					</li>
-					<li class="users__item">
-						<a class="users__link" href="#"><img src="{% static 'home/pic/faces_5.png' %}" height="46" width="46"></a>
-					</li>
-				</ul>
+				<div class="quotes-slider">
+					<blockquote class="quotes-slider__slide">
+						<p class="quotes-slider__text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<cite class="quotes-slider__author">John Doe</cite>
+						<img class="quotes-slider__photo" src="{% static 'home/pic/faces_1.png' %}" height="46" width="46" alt="" title="" />
+					</blockquote>
+					<blockquote class="quotes-slider__slide">
+						<p class="quotes-slider__text">2/Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<cite class="quotes-slider__author">John Doe</cite>
+
+						<img class="quotes-slider__photo" src="{% static 'home/pic/faces_2.png' %}" height="46" width="46" alt="" title="" />
+					</blockquote>
+					<blockquote class="quotes-slider__slide">
+						<p class="quotes-slider__text">3/Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<cite class="quotes-slider__author">John Doe</cite>
+
+						<img class="quotes-slider__photo" src="{% static 'home/pic/faces_3.png' %}" height="46" width="46" alt="" title="" />
+					</blockquote>
+					<blockquote class="quotes-slider__slide">
+						<p class="quotes-slider__text">4/Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<cite class="quotes-slider__author">John Doe</cite>
+
+						<img class="quotes-slider__photo" src="{% static 'home/pic/faces_4.png' %}" height="46" width="46" alt="" title="" />
+					</blockquote>
+					<blockquote class="quotes-slider__slide">
+						<p class="quotes-slider__text">5/Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+						<cite class="quotes-slider__author">John Doe</cite>
+
+						<img class="quotes-slider__photo" src="{% static 'home/pic/faces_5.png' %}" height="46" width="46" alt="" title="" />
+					</blockquote>
+				</div>
+
 			</div>
 		</section>
 
 		<section class="section">
 			<div class="container">
 				<h2 class="section__title">Останні новини</h2>
-				
-				<ul class="big-news">
+
+				<ul class="big-news last">
 					<li class="big-news__item">
-						<img src="{% static 'home/pic/news_1.jpg' %}" height="240" width="240">
+						<img class="big-news__photo" src="{% static 'home/pic/news_1.jpg' %}" height="240" width="240">
 						<div class="big-news__desc">
 							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
 							<p class="big-news__date">20 січня 2017</p>
@@ -126,7 +169,7 @@
 					</li>
 
 					<li class="big-news__item blue">
-						<img src="{% static 'home/pic/news_2.jpg' %}" height="240" width="240">
+						<img class="big-news__photo" src="{% static 'home/pic/news_2.jpg' %}" height="240" width="240">
 						<div class="big-news__desc">
 							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
 							<p class="big-news__date">20 січня 2017</p>
@@ -135,7 +178,7 @@
 					</li>
 
 					<li class="big-news__item">
-						<img src="{% static 'home/pic/news_3.jpg' %}" height="240" width="240">
+						<img class="big-news__photo" src="{% static 'home/pic/news_3.jpg' %}" height="240" width="240">
 						<div class="big-news__desc">
 							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
 							<p class="big-news__date">20 січня 2017</p>
@@ -144,7 +187,7 @@
 					</li>
 
 					<li class="big-news__item blue">
-						<img src="{% static 'home/pic/news_4.jpg' %}" height="240" width="240">
+						<img class="big-news__photo" src="{% static 'home/pic/news_4.jpg' %}" height="240" width="240">
 						<div class="big-news__desc">
 							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
 							<p class="big-news__date">20 січня 2017</p>
@@ -194,20 +237,23 @@
 			</ul>
 		</section>
 
-		<section class="section contacts dark">
+		<section class="section contacts-section dark">
 			<div class="container">
-				<div class="contacts__col">
+				<div class="contacts-section__col">
 					<h3 class="section__title">Контакти</h3>
 
-					<div class="contacts__info">
-						<div class="contacts__info-item">
+					<div class="contacts-section__info">
+						<div class="contacts-section__info-item">
 							<i class="fa fa-map-marker" aria-hidden="true"></i>
 							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
 						</div>
 
-						<div class="contacts__info-item">
+						<div class="contacts-section__info-item">
 							<i class="fa fa-phone" aria-hidden="true"></i>
-							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
+							<p>
+								<a href="tel:0995439522">099 543 9522</a><br>
+								<a href="tel:0985645211">098 564 5211</a>
+						</p>
 						</div>
 					</div>
 
@@ -240,37 +286,33 @@
 						</div>
 					</form>
 				</div>
+			</div>
 
-				<div class="contacts__col map">
-					<div class="contacts__map-wrap">
-						<div id="map"></div>
+			<div class="contacts-section__map-wrap">
+				<div id="map"></div>
 
-						<script>
-						  function initMap() {
-							var mapDiv = document.getElementById('map');
-							var map = new google.maps.Map(mapDiv, {
-								center: {lat: 48.922973, lng: 24.701402},
-								zoom: 17,
-								disableDefaultUI: true,
-								draggable: false
-							});
-					
-							var marker = new google.maps.Marker({
-								position: new google.maps.LatLng(48.922973, 24.701402),
-								map: map,
-								title: 'RoboClub',
-								icon: '{% static 'home/svg/marker.svg' %}'
-							});
-					
-							map.setOptions({styles: styles});
-						  }
-						</script>
-					
-						<script async defer
-							src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZEocFpuybFyJZg92LhWsvIJdo56S34s&callback=initMap">
-						</script>
-					</div>
-				</div>
+				<script>
+				  function initMap() {
+					var mapDiv = document.getElementById('map');
+					var map = new google.maps.Map(mapDiv, {
+						center: {lat: 48.9228421, lng: 24.7016536},
+						zoom: 17,
+						disableDefaultUI: true,
+						draggable: true
+					});
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(48.9228708, 24.701702100000034),
+						map: map,
+						title: 'Робоклуб',
+						icon: '{% static 'home/svg/marker.svg' %}'
+					});
+				  }
+				</script>
+
+				<script async defer
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZEocFpuybFyJZg92LhWsvIJdo56S34s&callback=initMap">
+				</script>
 			</div>
 		</section>
 
