@@ -4,8 +4,9 @@ from django.template.defaultfilters import slugify
 from django.db import models
 from django.utils import timezone
 from django.core.urlresolvers import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
-
+from image_cropping import ImageRatioField
 def upload_location(instance, filename):
     return "%s/%s" % (instance.id, filename)
 
@@ -14,9 +15,12 @@ def upload_location(instance, filename):
 class Article(models.Model):
     title = models.CharField(max_length=250)
     slug = models.SlugField(unique=True, allow_unicode=True, max_length=250)
-    body = models.TextField()
+    body = RichTextUploadingField()
     publish = models.DateTimeField(default=timezone.now)
+    preview_image = models.ImageField(upload_to=upload_location, null=True, blank=True, )
+    cropping = ImageRatioField('preview_image', '480x480')
     image = models.ImageField(upload_to=upload_location, null=True, blank=True, )
+    cropping1 = ImageRatioField('image', '480x480')
     image2 = models.ImageField(upload_to=upload_location, null=True, blank=True, )
     image3 = models.ImageField(upload_to=upload_location, null=True, blank=True, )
     image4 = models.ImageField(upload_to=upload_location, null=True, blank=True, )
@@ -30,8 +34,12 @@ class Article(models.Model):
     video2 = models.URLField(max_length=150,null=True, blank=True, )
     video3 = models.URLField(max_length=150,null=True, blank=True, )
 
+
+
     # Then override models save method:
     def save(self, *args, **kwargs):
+        self.cropping = ""
+        self.cropping1 = ""
         if not self.id:
             # Only set the slug when the object is created.
             self.slug = slugify(self.title)  # Or whatever you want the slug to use

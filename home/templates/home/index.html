@@ -1,4 +1,6 @@
 {% load static %}
+{% load random_image %}
+{% load thumbnail %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -56,7 +58,7 @@
 						<a class="main-menu__link" href="#">Курси</a>
 					</li>
 					<li class="main-menu__item">
-						<a class="main-menu__link" href="#">Новини</a>
+						<a class="main-menu__link" href="/news">Новини</a>
 					</li>
 					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Галерея</a>
@@ -156,45 +158,35 @@
 			<div class="container">
 				<h2 class="section__title">Останні новини</h2>
 
-				<ul class="big-news last">
-					<li class="big-news__item">
-						<img class="big-news__photo" src="{% static 'home/pic/news_1.jpg' %}" height="240" width="240">
-						<div class="big-news__desc">
-							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
-							<p class="big-news__date">20 січня 2017</p>
-						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
-						</div>
-					</li>
+				<ul class="big-news">
+                {%for article in articles%}
+                {% if forloop.counter|divisibleby:2 %}
+                <li class="big-news__item blue">{% else %}
+				<li class="big-news__item">
+                {% endif %}
+                    {% if article.preview_image %}
 
-					<li class="big-news__item blue">
-						<img class="big-news__photo" src="{% static 'home/pic/news_2.jpg' %}" height="240" width="240">
-						<div class="big-news__desc">
-							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
-							<p class="big-news__date">20 січня 2017</p>
-						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
-						</div>
-					</li>
+					<img class="big-news__photo" src="{% thumbnail article.preview_image 360x360 box=article.cropping crop detail %}" height="240" width="240">
 
-					<li class="big-news__item">
-						<img class="big-news__photo" src="{% static 'home/pic/news_3.jpg' %}" height="240" width="240">
-						<div class="big-news__desc">
-							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
-							<p class="big-news__date">20 січня 2017</p>
-						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
-						</div>
-					</li>
+					{% elif article.image%}
+                <img class="big-news__photo" src="{% thumbnail article.image 360x360 box=article.cropping1 crop detail %}" height="240" width="240">
 
-					<li class="big-news__item blue">
-						<img class="big-news__photo" src="{% static 'home/pic/news_4.jpg' %}" height="240" width="240">
-						<div class="big-news__desc">
-							<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
-							<p class="big-news__date">20 січня 2017</p>
-						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
-						</div>
-					</li>
-				</ul>
+					{%else%}
+					{% random_im forloop.counter as im%}
+					 <img class="big-news__photo" src="{% static im %}" height="240" width="240" >
+                {% endif %}
 
-				<button class="basic-btn yellow centered" type="button">Всі новини</button>
+					<div class="big-news__desc">
+						<h3 class="big-news__title"><a href="#">{{article.title}}</a></h3>
+						<p class="big-news__date">{{article.publish}}</p>
+						<a class="big-news__link basic-btn yellow" href="{% url 'article' article.slug %}"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+					</div>
+				</li>
+    {% endfor %}
+
+			</ul>
+
+				<a href="/news"><button class="basic-btn yellow centered" type="button">Всі новини</button></a>
 			</div>
 		</section>
 

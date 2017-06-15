@@ -1,7 +1,18 @@
-
-
+from easy_thumbnails.conf import Settings as thumbnail_settings
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+CKEDITOR_FILENAME_GENERATOR = 'utils.get_filename'
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': 800,
+    },
+}
+CKEDITOR_UPLOAD_PATH = "uploads/"
 import os
-import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -14,10 +25,10 @@ SECRET_KEY = 'aeu*&@zo9hb+2we9vhvt_zwzh#b1xhzeqnrn6utbrru4pe8fw3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = True
+DEBUG = True
 # TEMPLATE_DEBUG = True
-DEBUG = False
-TEMPLATE_DEBUG = False
+# DEBUG = False
+# TEMPLATE_DEBUG = False
 
 
 ALLOWED_HOSTS = ['*']
@@ -38,6 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'easy_thumbnails',
+    'ckeditor',
+    'ckeditor_uploader',
+
+
 
 
 
@@ -81,9 +97,22 @@ WSGI_APPLICATION = 'robo.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'mydatabase',
+#         'USER': 'mydatabaseuser',
+#         'PASSWORD': 'mypassword',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -110,7 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Uzhgorod'
 
 USE_I18N = True
 
@@ -136,6 +165,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 # DATABASES['default'].update(db_from_env)
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
+
+
 
 
 try:

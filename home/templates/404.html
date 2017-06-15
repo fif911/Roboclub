@@ -1,11 +1,184 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+	<meta charset="utf-8" />
+	<title>RoboClub 404</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic">
+	<link rel="shortcut icon" href="{% static 'home/img/favicon.png' %}" />
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 </head>
+
 <body>
-{% include "common/header.html" %}
-doesn't exist (
+
+<div class="wrapper">
+
+	<header class="header inner">
+
+		<div class="container">
+			<h1 class="logo ir">
+				<a href="/" class="logo__link">RoboClub IF</a>
+			</h1>
+
+			<nav class="main-nav">
+				<ul class="main-menu">
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="/index">Головна</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Про нас</a>
+
+						<ul class="sub-menu">
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">RoboClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">CodeClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Design Squad</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Physics</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Astronomy</a></li>
+						</ul>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Курси</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="/news">Новини</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Галерея</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Контакти</a>
+					</li>
+				</ul>
+
+				<ul class="main-socials">
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+	</header><!-- .header -->
+
+	<main class="content">
+
+		<div class="container">
+			<div class="section-404">
+				<h2 class="section-404__title">404</h2>
+
+				<p class="section-404__info">Вибачте, такої сторінки не існує :(</p>
+
+				<a href="/" class="section-404__back basic-btn red large"><i class="fa fa-angle-left" aria-hidden="true"></i> Повернутися на головну</a>
+			</div>
+		</div>
+
+		<section class="section contacts-section dark">
+			<div class="container">
+				<div class="contacts-section__col">
+					<h3 class="section__title">Контакти</h3>
+
+					<div class="contacts-section__info">
+						<div class="contacts-section__info-item">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
+						</div>
+
+						<div class="contacts-section__info-item">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<p>
+								<a href="tel:0995439522">099 543 9522</a><br>
+								<a href="tel:0985645211">098 564 5211</a>
+						</p>
+						</div>
+					</div>
+
+					<h3 class="section__title">Напишіть нам</h3>
+
+					<form class="basic-form">
+						<div class="basic-form__line">
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Ім’я">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Телефон">
+							</div>
+						</div>
+
+						<div class="basic-form__line">
+							<input class="basic-input" type="text" name="" placeholder="Тема повідомлення">
+						</div>
+
+						<div class="basic-form__line">
+							<textarea class="basic-textarea" placeholder="Повідомлення"></textarea>
+						</div>
+
+						<div class="basic-form__btns">
+							<img src="{% static 'home/img/reCaptcha.png' %}" height="46" width="184">
+							<button class="basic-form__submit basic-btn yellow" type="submit">Надіслати</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="contacts-section__map-wrap">
+				<div id="map"></div>
+
+				<script>
+				  function initMap() {
+					var mapDiv = document.getElementById('map');
+					var map = new google.maps.Map(mapDiv, {
+						center: {lat: 48.9228421, lng: 24.7016536},
+						zoom: 17,
+						disableDefaultUI: true,
+						draggable: true
+					});
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(48.9228708, 24.701702100000034),
+						map: map,
+						title: 'Робоклуб',
+						icon: '{% static 'home/svg/marker.svg' %}'
+					});
+				  }
+				</script>
+
+				<script async defer
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZEocFpuybFyJZg92LhWsvIJdo56S34s&callback=initMap">
+				</script>
+			</div>
+		</section>
+
+	</main><!-- .content -->
+
+	<footer class="footer">
+
+		<p class="f-copy">Copyright &copy; GO Tour. All rights reserved.</p>
+
+	</footer><!-- .footer -->
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'home/js/scripts.js' %}"></script>
+
 </body>
 </html>

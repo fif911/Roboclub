@@ -1,15 +1,96 @@
-<html>
+{% load static %}
+{% load random_image %}
+{% load thumbnail %}
+<!DOCTYPE html>
+<html lang="uk">
 <head>
-  <title>{{article.title}}</title>
-</head>
-<body>
-{% include "common/header.html" %}
-<h1>{{article.title}}</h1>
-    {% if article.image %}
-        <img  src='{{ article.image.url }}' class="img-rounded" height="30%" >
-    {% endif %}
+	<meta charset="utf-8" />
+	<title>RoboClub News</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="{% static 'home/css/main.css' %}" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,700&amp;subset=cyrillic">
+	<link rel="shortcut icon" href="{% static 'home/img/favicon.png' %}" />
 
-    {% if article.image2 %}
+	<!--[if lt IE 9]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<header class="header inner">
+
+		<div class="container">
+			<h1 class="logo ir">
+				<a href="/" class="logo__link">RoboClub IF</a>
+			</h1>
+
+			<nav class="main-nav">
+				<ul class="main-menu">
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="/index">Головна</a>
+					</li>
+					<li class="main-menu__item has-sub">
+						<a class="main-menu__link" href="#">Про нас</a>
+
+						<ul class="sub-menu">
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">RoboClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">CodeClub</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Design Squad</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Physics</a></li>
+							<li class="sub-menu__item"><a class="sub-menu__link" href="#">Astronomy</a></li>
+						</ul>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Курси</a>
+					</li>
+					<li class="main-menu__item active">
+						<a class="main-menu__link" href="/news">Новини</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Галерея</a>
+					</li>
+					<li class="main-menu__item">
+						<a class="main-menu__link" href="#">Контакти</a>
+					</li>
+				</ul>
+
+				<ul class="main-socials">
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+					</li>
+					<li class="main-socials__item">
+						<a class="main-socials__link" href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+	</header><!-- .header -->
+
+	<main class="content">
+
+		<h2 class="content-title">{{article.title|upper}}</h2>
+
+		<div class="container">
+			<div class="article-container">
+				<article class="article">
+
+                    {{article.body|safe}}
+                    <br>
+					 {% if article.image %}
+					<img src="{{article.image.url}}" >
+                    {% endif %}
+{% if article.image2 %}
         <img  src='{{ article.image2.url }}' class="img-rounded" height="30%" >
     {% endif %}
               {% if article.image3 %}
@@ -45,10 +126,152 @@
                {% if article.video3 %}
               <iframe width="560" height="315" src='{{article.video3}}' frameborder="0" allowfullscreen></iframe>
                 {% endif %}
-<div style="width: 80%;border: solid 1px black; word-wrap:break-word; ">
-    <p>{% autoescape off %}{{ article.body }}{% endautoescape %}</p>
+
+
+				<footer class="article-footer">
+					<div class="article-footer__share">
+					</div>
+
+					<div class="article-footer__info">
+						<p class="article-footer__date">{{article.publish}}</p>
+						<p class="article-footer__author">Сергій Никоноров</p>
+					</div>
+				</footer>
+			</div>
+
+			<h3 class="long-title">Читайте також</h3>
+
+			<ul class="big-news">
+				<li class="big-news__item">
+					<img src="{% static 'home/pic/news_1.jpg' %}" height="240" width="240">
+					<div class="big-news__desc">
+						<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+						<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+					</div>
+				</li>
+
+				<li class="big-news__item blue">
+					<img src="{% static 'home/pic/news_2.jpg' %}" height="240" width="240">
+					<div class="big-news__desc">
+						<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+						<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+					</div>
+				</li>
+
+				<li class="big-news__item">
+					<img src="{% static 'home/pic/news_3.jpg' %}" height="240" width="240">
+					<div class="big-news__desc">
+						<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+						<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+					</div>
+				</li>
+
+				<li class="big-news__item blue">
+					<img src="{% static 'home/pic/news_4.jpg' %}" height="240" width="240">
+					<div class="big-news__desc">
+						<h3 class="big-news__title"><a href="#">Lorem Ipsum is simply dummy text</a></h3>
+						<p class="big-news__date">20 січня 2017</p>
+						<a class="big-news__link basic-btn yellow" href="#"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<section class="section contacts-section dark">
+			<div class="container">
+				<div class="contacts-section__col">
+					<h3 class="section__title">Контакти</h3>
+
+					<div class="contacts-section__info">
+						<div class="contacts-section__info-item">
+							<i class="fa fa-map-marker" aria-hidden="true"></i>
+							<p>м. Івано-Франківськ<br/> вул. Південний бульвар, 22</p>
+						</div>
+
+						<div class="contacts-section__info-item">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<p>
+								<a href="tel:0995439522">099 543 9522</a><br>
+								<a href="tel:0985645211">098 564 5211</a>
+						</p>
+						</div>
+					</div>
+
+					<h3 class="section__title">Напишіть нам</h3>
+
+					<form class="basic-form">
+						<div class="basic-form__line">
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Ім’я">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="email" name="" placeholder="E-mail">
+							</div>
+							<div class="basic-form__col">
+								<input class="basic-input" type="text" name="" placeholder="Телефон">
+							</div>
+						</div>
+
+						<div class="basic-form__line">
+							<input class="basic-input" type="text" name="" placeholder="Тема повідомлення">
+						</div>
+
+						<div class="basic-form__line">
+							<textarea class="basic-textarea" placeholder="Повідомлення"></textarea>
+						</div>
+
+						<div class="basic-form__btns">
+							<img src="{% static 'home/img/reCaptcha.png' %}" height="46" width="184">
+							<button class="basic-form__submit basic-btn yellow" type="submit">Надіслати</button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+			<div class="contacts-section__map-wrap">
+				<div id="map"></div>
+
+				<script>
+				  function initMap() {
+					var mapDiv = document.getElementById('map');
+					var map = new google.maps.Map(mapDiv, {
+						center: {lat: 48.9228421, lng: 24.7016536},
+						zoom: 17,
+						disableDefaultUI: true,
+						draggable: true
+					});
+
+					var marker = new google.maps.Marker({
+						position: new google.maps.LatLng(48.9228708, 24.701702100000034),
+						map: map,
+						title: 'Робоклуб',
+						icon: '{% static 'home/svg/marker.svg' %}'
+					});
+				  }
+				</script>
+
+				<script async defer
+					src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZEocFpuybFyJZg92LhWsvIJdo56S34s&callback=initMap">
+				</script>
+			</div>
+		</section>
+
+	</main><!-- .content -->
+
+	<footer class="footer">
+
+		<p class="f-copy">Copyright &copy; GO Tour. All rights reserved.</p>
+
+	</footer><!-- .footer -->
+
 </div>
-<p>{{article.publish}}</p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'home/js/scripts.js' %}"></script>
+
 </body>
 </html>
-

@@ -1,11 +1,9 @@
 {% load static %}
-{% load random_image %}
-{% load thumbnail %}
 <!DOCTYPE html>
 <html lang="uk">
 <head>
 	<meta charset="utf-8" />
-	<title>RoboClub News</title>
+	<title>RoboClub 404</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
@@ -34,9 +32,9 @@
 			<nav class="main-nav">
 				<ul class="main-menu">
 					<li class="main-menu__item">
-						<a class="main-menu__link" href="/index">Головна</a>
+						<a class="main-menu__link" href="#">Головна</a>
 					</li>
-					<li class="main-menu__item has-sub">
+					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Про нас</a>
 
 						<ul class="sub-menu">
@@ -50,7 +48,7 @@
 					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Курси</a>
 					</li>
-					<li class="main-menu__item active">
+					<li class="main-menu__item">
 						<a class="main-menu__link" href="#">Новини</a>
 					</li>
 					<li class="main-menu__item">
@@ -79,63 +77,15 @@
 
 	<main class="content">
 
-		<h2 class="content-title">Новини</h2>
-
 		<div class="container">
-			<ul class="big-news">
-                {%for article in articles%}
-                {% if forloop.counter|divisibleby:2 %}
-                <li class="big-news__item blue">{% else %}
-				<li class="big-news__item">
-                {% endif %}
-                    {% if article.preview_image %}
+			<div class="section-404">
+				<h2 class="section-404__title">404</h2>
+<p class="section-404__info">500</p>
+				<p class="section-404__info">Вибачте, такої сторінки не існує :(</p>
 
-					<img class="big-news__photo" src="{% thumbnail article.preview_image 360x360 box=article.cropping crop detail %}" height="240" width="240">
-
-					{% elif article.image%}
-                <img class="big-news__photo" src="{% thumbnail article.image 360x360 box=article.cropping1 crop detail %}" height="240" width="240">
-
-					{%else%}
-					{% random_im forloop.counter as im%}
-					 <img class="big-news__photo" src="{% static im %}" height="240" width="240" >
-                {% endif %}
-
-					<div class="big-news__desc">
-						<h3 class="big-news__title"><a href="#">{{article.title}}</a></h3>
-						<p class="big-news__date">{{article.publish}}</p>
-						<a class="big-news__link basic-btn yellow" href="{% url 'article' article.slug %}"><i class="fa fa-link" aria-hidden="true"></i> Дивитись</a>
-					</div>
-				</li>
-    {% endfor %}
-
-			</ul>
-
-			<ul class="pager-list">
-{% if articles.has_previous %}
-           <li class="pager-list__item">
-					<a href="?page={{ articles.previous_page_number }}" class="pager-list__link">&#9668</a>
-				</li>
-                {% else %}
-				<li class="pager-list__item">
-					<div class="pager-list__link" disabled>&#9668</div>
-				</li>
-                {% endif %}
-                 <span class="current">
-            Page {{ articles.number }} of {{ articles.paginator.num_pages }}.
-                </span>
- {% if articles.has_next %}
-            <li class="pager-list__item">
-					<a href="?page={{ articles.next_page_number }}" class="pager-list__link">&#9658</a>
-				</li>
-                 {% else %}
-			<li class="pager-list__item">
-					<div class="pager-list__link" disabled>&#9658</div>
-				</li>
-{% endif %}
-			</ul>
+				<a href="/" class="section-404__back basic-btn red large"><i class="fa fa-angle-left" aria-hidden="true"></i> Повернутися на головну</a>
+			</div>
 		</div>
-
-
 
 		<section class="section contacts-section dark">
 			<div class="container">
